@@ -21,11 +21,11 @@ pipeline {
                 archiveArtifacts artifacts: 'results/*.xml', allowEmptyArchive: true
             }
         }
-        post {
-            always {
-                junit 'results/*_result.xml'
-                cleanWs()
-            }
+    }
+    post {
+        always {
+            junit 'results/*_result.xml'
+            cleanWs()
         }
     }
 }
