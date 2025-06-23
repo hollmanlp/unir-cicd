@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.13.5-bookworm'
-            args '-u root'    // Ejecutar como root para poder instalar paquetes
-        }
-    }
+    agent any
     stages {
         stage('Source') {
             steps {
@@ -13,17 +8,10 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Construyendo stage'
+                echo 'Construyendo Build'
                 script {
-                    // Instalación de 'make' dentro del contenedor
-                    sh '''
-                        apt-get update
-                        apt-get install -y make
-                        make --version
-                    '''
+                    sh 'make build'
                 }
-                echo 'Construyendo stage'
-                sh 'make build'
             }
         }
         stage('Unit Test') {
