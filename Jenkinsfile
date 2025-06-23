@@ -42,9 +42,8 @@ pipeline {
             cleanWs()
         }
         failure {
-            emailext to: 'hollmanlp@gmail.com',
-                     subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                     body: "The build has failed. Please check the Jenkins console output for more details.\n\nJob URL: ${env.BUILD_URL}"
+            emailext subject: "Pipeline Error", to: 'hollmanlp@gmail.com',
+                     body: "El job ${env.JOB_NAME} ha finalizado. Número de ejecución ${env.BUILD_NUMBER}"
             echo 'Build failed!'
         }
     }
