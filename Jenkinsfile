@@ -28,6 +28,13 @@ pipeline {
                 archiveArtifacts artifacts: 'results/*.xml', allowEmptyArchive: true
             }
         }
+        stage('Unit Test-E2E') {
+            steps {
+                echo 'Unit Test stage'
+                sh 'make test-e2e'
+                archiveArtifacts artifacts: 'results/*.xml', allowEmptyArchive: true
+            }
+        }
     }
     post {
         always {
