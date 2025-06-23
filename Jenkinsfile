@@ -21,7 +21,7 @@ pipeline {
                 archiveArtifacts artifacts: 'results/*.xml', allowEmptyArchive: true
             }
         }
-        stage('Unit Test') {
+        stage('Unit Test-API') {
             steps {
                 echo 'Unit Test stage'
                 sh 'make test-api'
