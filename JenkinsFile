@@ -1,9 +1,4 @@
 pipeline {
-    /*
-    agent {
-        label 'docker'
-    }
-    */
     agent {
         docker {
             image 'python:3.13.5-bookworm'
